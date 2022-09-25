@@ -2,6 +2,7 @@ package Lesson6.Exercise6_8;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 //import static org.junit.Assert.assertEquals;
 
@@ -21,13 +22,20 @@ public class Parking {
         LocalTime start = LocalTime.of(1, 20, 25, 1024);
         LocalTime end = LocalTime.of(3, 22, 27, 1544);
 
-        Duration.between(start, end).getSeconds();
+        System.out.println(Duration.between(start, end).getSeconds());
+
+        System.out.println("---------------------------------");
+
+        int test = (int) Duration.between(start, end).getSeconds();
+        System.out.println("Cast to int -> "+test);
+
+//        System.out.println(Duration.between(start, end).get(ChronoUnit.HOURS));
 
 
-        Duration fromDays = Duration.ofDays(1);
+//        Duration fromDays = Duration.ofDays(1);
         //assertEquals(86400, fromDays.getSeconds());
 
-        Duration fromMinutes = Duration.ofMinutes(60);
+//        Duration fromMinutes = Duration.ofMinutes(60);
 
 
 
