@@ -7,53 +7,33 @@ import java.time.temporal.ChronoUnit;
 //import static org.junit.Assert.assertEquals;
 
 public class Parking {
+    private static Person checkInPerson;
     public static void main(String[] args) {
-        Person ps = new Person("test", LocalTime.now());
-        System.out.println(ps);
-        System.out.println(ps.getTimeIn());
-        System.out.println(ps.getTimeIn().getHour());
-
-        LocalTime time1 = LocalTime.of(2,00);
-        LocalTime time2 = LocalTime.now();
-        Duration.between(time1, time2).getSeconds();
-        System.out.println(Duration.between(time1, time2).getSeconds());
-
-        System.out.println("---------------------------------");
-        LocalTime start = LocalTime.of(1, 20, 25, 1024);
-        LocalTime end = LocalTime.of(3, 22, 27, 1544);
-
-        System.out.println(Duration.between(start, end).getSeconds());
-
-        System.out.println("---------------------------------");
-
-        int test = (int) Duration.between(start, end).getSeconds();
-        System.out.println("Cast to int -> "+test);
-
-//        System.out.println(Duration.between(start, end).get(ChronoUnit.HOURS));
-
-
-//        Duration fromDays = Duration.ofDays(1);
-        //assertEquals(86400, fromDays.getSeconds());
-
-//        Duration fromMinutes = Duration.ofMinutes(60);
-
-
-
-        //Duration duration = (Duration.between(time1,time2));
-
-        //Duration fromDays = Duration.ofDays(1);
-
-//        System.out.println(fromDays.toString().substring(2)
-//                .replaceAll("(\\d[HMS])(?!$)", "$1 ")
-//                .toLowerCase());
-
-
-
-
+            parkingCheckin();
+            packingCalc(checkInPerson);
     }
-//
-//    public double packingCalc(Person ps) {
-//
-//    }
+
+    public static void parkingCheckin () {
+        checkInPerson = new Person("test", LocalTime.of(19,42,2));
+    }
+    public static void packingCalc(Person ps) {
+        double parkPrice;
+        checkInPerson.setTimeOut(LocalTime.now());
+        System.out.println(checkInPerson);
+        Long duration = Duration.between(checkInPerson.getTimeIn(),checkInPerson.getTimeOut()).toHours()+1;
+        System.out.println(duration);
+        if (duration <= 3) {
+            parkPrice = 2;
+            System.out.printf("Parking fee %.2f",parkPrice);
+        } else if (duration>3&&duration<=19) {
+            parkPrice = 2+(duration-3)*0.5;
+            System.out.printf("Parking fee %.2f",parkPrice);
+        }
+        else {
+            parkPrice = 10;
+            System.out.printf("Parking fee %.2f",parkPrice);     
+        }
+    }
+
 
 }
