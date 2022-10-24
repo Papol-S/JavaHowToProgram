@@ -1,14 +1,17 @@
-package Lesson7.Exercise7_21;
+package Lesson7.Exercise7_21_Use_static_Method;
 
 import java.util.Scanner;
 
-public class TurtleGraphics {
+public class TurtleGraphicsUseStaticDisplayFloorSize {
 
     public static void main(String[] args) {
-        Turtle turtle = new Turtle();
+//        FloorSizeDisplayFloorSizeStatic.setRowSize(20);
+//        FloorSizeDisplayFloorSizeStatic.setColumnSize(20);
+        TurtleNeglectDisplayFloorSize turtle = new TurtleNeglectDisplayFloorSize();
         Scanner input = new Scanner(System.in);
         turtle.reset();
-        turtle.displayFloor();
+//        turtle.displayFloor();
+        FloorSizeDisplayFloorSizeStatic.displayFloor();
         while (turtle.isRunStatus()) {
             System.out.print("Enter command number : ");
             int command = input.nextInt();
@@ -31,8 +34,8 @@ public class TurtleGraphics {
                     turtle.moveForward(distance);
                     break;
                 case 6 :
-                    turtle.displayFloor();
-                    //FloorSize.displayFloor();
+                    //turtle.displayFloor();
+                    FloorSizeDisplayFloorSizeStatic.displayFloor();
                     break;
                 case 9 :
                     turtle.endOfData();
